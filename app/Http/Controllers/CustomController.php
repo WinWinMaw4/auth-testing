@@ -15,16 +15,24 @@ class CustomController extends Controller
         // User::create(['name'=>"jj", 'email'=>'jj@gmail.com',"password"=>bcrypt('password'),'tier'=>'gold' ]);
 
         $credentials = $request->validate([
-            // 'email' => ['required', 'email'],
-            'phone' => ['required'],
+            'emailOrPhone' => ['required'],
             'password' => ['required'],
 
         ]);
 
-        if (Auth::attempt(['phone' => $request->phone, 'password' => $request->password])) {
-            // The user is being remembered...
-            return redirect()->route('home');
+        if(is_numeric($request->emailOrPhone)){
+            if (Auth::attempt(['phone' => $request->emailOrPhone, 'password' => $request->password])) {
+                // The user is being remembered...
+                return redirect()->route('home');
+            }
+        }else{
+            if (Auth::attempt(['email' => $request->emailOrPhone, 'password' => $request->password])) {
+                // The user is being remembered...
+                return redirect()->route('home');
+            }
         }
+
+       
         return $request;    
     }
 

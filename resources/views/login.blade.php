@@ -10,11 +10,11 @@
     <h3>Log In</h3>
     <form action="{{route('login')}}" method="post">
         @csrf
-        <label >Email</label>
+        <!-- <label >Email</label>
         <input type="text" name="email" require disabled>
-        <br>
-        <label >Phone</label>
-        <input type="text" name="phone" require>
+        <br> -->
+        <label >Email or Phone</label>
+        <input type="text" name="emailOrPhone" placeholder="name@gmail.com" require>
         <br>
         <label for="">password</label>
         <input type="password" name="password">
