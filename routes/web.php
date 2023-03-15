@@ -20,5 +20,8 @@ Route::get('/',[PageController::class,'welcome'])->name('welcome');
 
 Route::get('/home',[HomeController::class,'index'])->name('home');
 Route::get('/login',[CustomController::class,'login'])->name('login');
+Route::view('/passcode-login',"passcode")->name('passcode-login');
+Route::post('/passcode-login',[CustomController::class,'passCodeLoginAccount'])->name('passCodeLoginAccount');
+
 Route::post('/login',[CustomController::class,'loginAccount'])->name('loginAccount');
 Route::post('/logout',[CustomController::class,'logoutAccount'])->name('logout');

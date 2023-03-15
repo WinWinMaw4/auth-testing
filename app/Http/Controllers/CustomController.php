@@ -36,6 +36,24 @@ class CustomController extends Controller
         return $request;    
     }
 
+    public function passCodeLogin(){
+        return view("passcode");
+    }
+
+    public function passCodeLoginAccount(Request $request){
+       $request->validate([
+        'passcode'=>"required",
+       ]);
+
+       $user = User::where('pass_code', $request->passcode)->first();
+
+       if(isset($user)){
+            Auth::login($user);
+           return redirect()->route('home');
+       }
+       return "user not match";
+    }
+
     public function logoutAccount(){
         Auth::logout();
         return redirect()->route('login');
