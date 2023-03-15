@@ -11,7 +11,10 @@
     <form action="{{route('login')}}" method="post">
         @csrf
         <label >Email</label>
-        <input type="text" name="email" require>
+        <input type="text" name="email" require disabled>
+        <br>
+        <label >Phone</label>
+        <input type="text" name="phone" require>
         <br>
         <label for="">password</label>
         <input type="password" name="password">
